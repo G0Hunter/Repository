@@ -1,0 +1,15 @@
+a img {
+    border: none; 
+}
+.main-menu-section{
+	display: block;
+}
+.download-bt{
+	display: none;
+}
+.log-in-header{
+	display: none;
+}
+.sing-up-header{
+	display: none;
+}
