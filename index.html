@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Photo album</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/media.css">
+  <link rel="stylesheet" type="text/css" href="css/font.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" type="text/css" href="css/ie8style.css">
+    <script src="js/html5shiv.js"></script>   
+  <![endif]--> 
+</head>
+<body>
+<header>
+ <div class="header-top-bar">
+   <div class="container clearfix">
+    <div class="header-top-inner">
+      <div class="header-account" id="header-account">
+          <a href="#" class="sing-up-header">Регистрация</a>
+          <a href="#" class="log-in-header">Вход</a>
+          <a href="#" class="log-out-header">Выход</a>
+              <div class="window-login-wrap">
+                  <div class="window-login">
+                      <form>
+                            <h2>Вход на сайт</h2>
+                            <div class="login">
+                              <label for="login-enter">Логин:</label>
+                              <input type="text" name="login" id ="login-enter">
+                            </div>
+                            <div class="password">
+                              <label for="password-enter">Пароль:</label>
+                              <input type="password" name="password" id="password-enter">
+                            </div>
+                            <div class="button-log">
+                              <input type="submit" value="Войти" name="button" class="enter-log-button">
+                            </div>
+                      </form>
+                  </div>
+              </div>
+              <div class="registration-wrap">
+                 <div class="refistration-form">
+                    <form>
+                      <div class="form-date">
+                           <label for="login">Логин:<span class="requir-star">*</span> </label>
+                           <input id="login" type="text" name="login">
+                           <label for="password">Пароль:<span class="requir-star">*</span> </label>
+                           <input id="password" type="password" name="password">
+                           <label for="name">Имя:</label>
+                           <input type="text" name="name" id="name">
+                       </div>
+                           <input type="submit" value="Регистрация" class="reg-bt"/>
+                       
+                    </form>
+                 </div>
+              </div>
+          </div>
+      </div>
+   </div>
+ </div>
+   <div class="header-logo">
+       <div class="logo-wrap">
+           <a href="index.html"><img src="img/header-logo.png" alt="logo"></a>
+       </div>
+   </div>
+    <div class="main-menu-section">
+      <div class="container clearfix">
+         <div class="main-menu" id="main-menu">
+           <nav>
+                <ul class="menu-ul">
+                  <li><a href="#gallery" class="gallery-bt">Галерея<i class="fa fa-chevron-down"></i></a></li>
+                  <li><a class="download-bt" href="#">Загрузить фото<i class="fa fa-chevron-down"></i></a></li>
+                  <li><a class="search-bt" href="#">Поиск<i class="fa fa-chevron-down"></i></a></li>
+                </ul>
+             </nav> 
+             <div class="search-wrap">
+                 <div class="search">
+                     <input type="text" class="search-input" placeholder="Поиск" value="">
+                     <input type="button" class="search-form-btn"  value="Поиск">
+                 </div>
+                 <div class="search-result">
+                   Результат Поиска
+                     <div class="search-result-close">
+                      <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                    </div>
+                    <div class="search-result-error">Фотография не найдена</div>
+                 </div>
+            </div>
+          <div class="download-wrap">
+                 <div class="download">
+                      <button class="img-add-btn">Выбрать фото</button>
+                      <form>
+                        <input class="img-add-btn-hide" type="file" multiple="multiple" accept="image/*"  >
+                      <div class="img-prew" id = "img-prew">
+                         <img id="download-img" src=""  alt="Фото загружено">
+                         <div class="add-tag">
+                           <input class="tags-in" type="text" placeholder="Оставить тег к фото">
+                           <input type="submit" value="Сохранить" class="save-img-bt"/>
+                         </div>
+                      </div>
+                    </form>
+                      <span class="success-load-text"></span>
+                 </div>
+           </div>
+      </div>
+    </div> 
+</div> 
+</header>
+<section class="main-slaider-section">
+    <div class="container clearfix">
+        <div class="carousel "> 
+          <div class="carousel-wrapper"> 
+               <div class="carousel-button-left"><a href="#"></a></div> 
+               <div class="carousel-button-right"><a href="#"></a></div> 
+             <div class="carousel-items"> 
+                 <div class="carousel-block">
+                    <div class="item"><img src="img/4.jpg" alt=""></div>
+                </div>
+                <div class="carousel-block">
+                    <div class="item"><img src="img/1.jpg" alt=""></div>
+                </div>
+                <div class="carousel-block">
+                    <div class="item"><img src="img/2.jpeg" alt=""></div>
+                </div>
+                <div class="carousel-block">
+                    <div class="item"><img src="img/5.jpg" alt=""></div>
+                </div>
+            </div>
+          </div>
+   </div>
+</div>
+</section>
+<section class="content-section">
+    <div class="container clearfix">
+      <div id="gallery" class="content-box">
+         <div class="view-img-wrapper">
+          <img >
+            <div class="like-wrapper">
+              <div class="like">
+                <a href="#" class="like-btn">Оценить</a>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+</section>
+<footer>
+  <div class="container clearfix">
+      <div class="copyright">
+          <div class="left-copy">Copyright ©</div>
+      </div>
+  </div>
+</footer> 
+<!-- Скрипты -->
+<script src="js/jquery-1.12.min.js"></script>
+   <!--[if lte IE 9]>
+ <script src="js/ie8.js"></script> 
+  <![endif]--> 
+<script src="js/main.js"></script>
+</body>
+</html>
