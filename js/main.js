@@ -174,7 +174,7 @@ var PhotoBookApp = (function() {
     })
     function auto_right(carusel) {
         setInterval(function() {
-            if (!$($caruselClass).is('.hover')) {
+            if (!($($caruselClass).is('.hover'))) {
                 right_carusel($caruselClass);
             }
         }, 4000)
