@@ -9,17 +9,21 @@
     var $searchResultError = $('.search-result-error');
     var $viewImgWrapper = $('.view-img-wrapper');
     var $likeBtn = $('.like-btn');
+    var $downloadWrap = $('.download-wrap');
+    var $imgAddBtn = $('.img-add-btn-hide');
+    var $searcWrap= $('.search-wrap');
+    var $imgPrevCont = $('.img-prev-container img');
     var imgSrcMini = '';
 
     $('.img-add-btn').on('click', function() {
-        $('.img-add-btn-hide').click();
+        $imgAddBtn.click();
         $successLoadText.hide();
     });
     $singUpHeader.on('click', function() {
         $registrationWrap.toggle();
     });
     $('.download-bt').on('click', function() {
-        $('.download-wrap').toggle();
+        $downloadWrap.toggle();
     });
     $logInHeader.on('click', function() {
         $windowLoginWrap.toggle();
@@ -30,8 +34,8 @@
         }
     });
     $('.search-bt').on('click', function() {
-        $('.search-wrap').toggle();
-        $('.img-prev-container img').show();
+        $searcWrap.toggle();
+        $imgPrevCont.show();
     });
     $('.search-result-close').on('click', function() {
         $searchResult.hide();
