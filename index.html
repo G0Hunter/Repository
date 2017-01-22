@@ -68,7 +68,12 @@
          <div class="main-menu" id="main-menu">
            <nav>
                 <ul class="menu-ul">
-                  <li><a href="#gallery" class="gallery-bt">Галерея<i class="fa fa-chevron-down"></i></a></li>
+                  <li class="sup-menu"><a href="#gallery" class="gallery-bt">Галерея<i class="fa fa-chevron-down"></i></a>
+                        <ul class="sub-menu">
+                          <li><a href="#gallery" class="myself-photo">Мои Фото</a></li>
+                          <li><a href="#gallery" class="gallery-users">Фото других<br> пользователей</a></li>
+                        </ul>
+                  </li>
                   <li><a class="download-bt" href="#">Загрузить фото<i class="fa fa-chevron-down"></i></a></li>
                   <li><a class="search-bt" href="#">Поиск<i class="fa fa-chevron-down"></i></a></li>
                 </ul>
@@ -153,10 +158,12 @@
 </footer> 
 <!-- Скрипты -->
 <script src="js/jquery-1.12.min.js"></script>
+<script src="js/main.js"></script>
    <!--[if lte IE 9]>
  <script src="js/ie8.js"></script> 
   <![endif]--> 
-<script src="js/main.js"></script>
 <script src="js/slider.js"></script>
+<script src="js/registUser.js"></script>
+<script src="js/uploadPhoto.js"></script>
 </body>
 </html>
