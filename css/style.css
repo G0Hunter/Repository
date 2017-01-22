@@ -17,6 +17,9 @@ a,a:hover{
        -moz-transition: all 0.3s ease 0s;
             transition: all 0.3s ease 0s;
 }
+a img {
+    border: none; 
+}
 .clearfix:before,
 .clearfix:after{
 	content: " ";
@@ -59,7 +62,8 @@ a,a:hover{
     border-top:1px solid #e5e5e5;
 }
 .menu-ul{ 
-    text-align: center; 
+    text-align: center;
+    position: relative; 
 }
 .main-menu  li{
     display: inline-block;
@@ -68,7 +72,7 @@ a,a:hover{
     font-size: 14px;
     font-weight: 700;
     line-height: 60px;
-    padding: 20px 30px;
+    padding: 22px 30px;
     position: relative;
     text-transform: uppercase;
 }
@@ -94,6 +98,34 @@ a,a:hover{
     content: "";
     height: 0px;
 }
+.sub-menu{
+    position: absolute;
+    z-index: 99999;
+    background: #333;
+    padding: 10px 17px;
+    text-align: left;
+    display: none;
+
+}
+.sub-menu li{
+    display: block;
+    margin-bottom:15px; 
+}
+.sub-menu li a {
+    padding: 0;
+    font-size: 12px;
+    line-height: 0;
+}
+.sub-menu li:hover{
+  background: #333;
+    color: #fff;
+}
+.sub-menu li a:after{
+    border: none;
+}
+.sup-menu:hover .sub-menu {
+    display: block;
+ }
 .search-wrap,.download-wrap{
     text-align: center;
     padding: 30px 0;
@@ -102,7 +134,7 @@ a,a:hover{
 .img-add-btn-hide,
 .log-out-header,
 .main-menu-section {
-    display: none;
+    display:none;
 }
 .search-form-btn{
     width: 75px;
@@ -203,9 +235,6 @@ a,a:hover{
     padding: 30px 12%;
     background: #333;
     color: #fff;
-}
-.right-copy{
-    float: right;
 }
 .window-login-wrap,
 .registration-wrap {
