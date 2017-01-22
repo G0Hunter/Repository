@@ -1,37 +1,20 @@
-var PhotoBookApp = (function() {
-    var $mainMenuSection = $('.main-menu-section');
-    var $imgPrew = $('.img-prew');
+;$(function() {
     var $windowLoginWrap = $('.window-login-wrap');
     var $registrationWrap = $('.registration-wrap');
-    var $logOutHeader = $('.log-out-header');
     var $logInHeader = $('.log-in-header');
     var $singUpHeader = $('.sing-up-header');
     var $successLoadText = $('.success-load-text');
     var $contentBox = $('.content-box');
-    var $form = $('form');
     var $searchResult = $('.search-result');
     var $searchResultError = $('.search-result-error');
     var $viewImgWrapper = $('.view-img-wrapper');
     var $likeBtn = $('.like-btn');
-    var imgSrc = '';
     var imgSrcMini = '';
-    //view on page
-    $('.save-img-bt').on('click', function() {
-        event.preventDefault();
-        $imgPrew.hide();
-        var $tagText = $('.tags-in').val();
-        var template = '<div class="single-content-box"><div class="content-box-img">'+
-                       '<div class="img-prev-container"><img src="' + imgSrc + '" alt="' + $tagText + '">'+
-                       '</div></div></div>';
-        $contentBox.append(template);
-        $successLoadText.html('Ваше фото успешно загружено').show();
-        $form[2].reset();
-    });
+
     $('.img-add-btn').on('click', function() {
         $('.img-add-btn-hide').click();
         $successLoadText.hide();
     });
-    //show/hide  form
     $singUpHeader.on('click', function() {
         $registrationWrap.toggle();
     });
@@ -41,92 +24,14 @@ var PhotoBookApp = (function() {
     $logInHeader.on('click', function() {
         $windowLoginWrap.toggle();
     });
-    //show photo
-    $contentBox.on('click', '.img-prev-container img', function() {
-        imgSrcMini = $(this).attr('src');
-        $viewImgWrapper.find('img').attr('src', imgSrcMini);
-        $viewImgWrapper.show();
-        if (($(this).hasClass('liked')) ) {
-            $likeBtn.html('Вы оценили!');
-        } else {
-            $likeBtn.html('Оценить');
+    $('body').mouseup(function(event) {
+        if ($viewImgWrapper.has(event.target).length == 0) {
+            $viewImgWrapper.hide();
         }
-        return imgSrcMini;
-    });
-    $likeBtn.on('click', function(event) {
-        event.preventDefault();
-        $('.img-prev-container img[src*="' + imgSrcMini + '"]').addClass("liked");
-        $likeBtn.html('Вы оценили!');
     });
     $('.search-bt').on('click', function() {
         $('.search-wrap').toggle();
         $('.img-prev-container img').show();
-    });
-    $('body').mouseup(function(event) {
-        if ($viewImgWrapper.has(event.target).length === 0) {
-            $viewImgWrapper.hide();
-        }
-    });
-    //logIn user
-    $('.enter-log-button').on('click', function() {
-        event.preventDefault();
-        var gettingLogin = localStorage.getItem('login');
-        var gettingName = localStorage.getItem('name');
-        var gettingPassword = localStorage.getItem('password');
-        var $userLogin = $('#login-enter').val();
-        var $userPassword = $('#password-enter').val();
-        if ($userPassword == gettingPassword && $userLogin == gettingLogin) {
-            $mainMenuSection.show();
-            $windowLoginWrap.hide();
-            $singUpHeader.hide();
-            $logInHeader.hide();
-            $logOutHeader.show();
-            alert('Здравствуйте ' + gettingName + '! Вы успешно вошли в фотоальбом!Нажмите что бы продолжить');
-        } else {
-            alert('Неправильно введены имя и пароль!');
-            $form[0].reset();
-        }
-    });
-    //registration form
-    $('.reg-bt').on('click', function() {
-        event.preventDefault();
-        var $loginDate = $('#login').val();
-        var $passwordDate = $('#password').val();
-        var passRegexp = /[a-z0-9._%+-]{6,}/;
-        var $nameDate = $('#name').val();
-        localStorage.setItem('login', $loginDate);
-        localStorage.setItem('password', $passwordDate);
-        localStorage.setItem('name', $nameDate);
-        if ($loginDate == '' || $passwordDate == '') {
-            alert('Заполните поля со звездочкой');
-        } else if (!(passRegexp.test($passwordDate))) {
-            alert('Пароль не менее 6 символов!');
-        } else {
-            alert('Вы успешно зарегестрированы!');
-            $registrationWrap.hide();
-            $form[1].reset();
-        }
-    });
-    $logOutHeader.on('click', function() {
-        localStorage.removeItem("login");
-        localStorage.removeItem("password");
-        localStorage.removeItem("name");
-        location.reload();
-        alert("До свидания!");
-    });
-    // search photo
-    $('.search-form-btn').on('click', function() {
-        var $wordTag = $('.search-input').val();
-        var $scrSearch = $('.single-content-box img[alt *="' + $wordTag + '"]').attr('src');
-        var templateSearch = '<div class="single-content-box">'+
-                             '<div class="content-box-img"><div class="img-prev-container">'+
-                             '<img src="' + $scrSearch + '" alt=""></div></div></div>';
-        if ($wordTag == null || $scrSearch == undefined) {
-            $searchResultError.show();
-        } else {
-            $searchResult.append(templateSearch);
-        }
-        $searchResult.show();
     });
     $('.search-result-close').on('click', function() {
         $searchResult.hide();
@@ -135,26 +40,54 @@ var PhotoBookApp = (function() {
         }
         $('.search-result .single-content-box').remove();
     });
-//Upload photo
-    $('.img-add-btn-hide').on('change', function() {
-        var preview = document.getElementById('download-img');
-        var file = document.querySelector('input[type=file]').files[0];
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = function() {
-            imgSrc = preview.src = reader.result;
+    //open Full Photo
+    $contentBox.on('click', '.img-prev-container img', function() {
+        imgSrcMini = $(this).attr('src');
+        $viewImgWrapper.find('img').attr('src', imgSrcMini);
+        $viewImgWrapper.show();
+        if (($(this).hasClass('liked'))) {
+            $likeBtn.html('Вы оценили!');
+        } else {
+            $likeBtn.html('Оценить');
         }
-        $imgPrew.show();
+        return imgSrcMini;
+    });
+    //add like class
+    $likeBtn.on('click', function(event) {
+        event.preventDefault();
+        $('.img-prev-container img[src*="' + imgSrcMini + '"]').addClass("liked");
+        $likeBtn.html('Вы оценили!');
+    });
+    // search photo
+    $('.search-form-btn').on('click', function() {
+        var $wordTag = $('.search-input').val();
+        var $scrSearch = $('.single-content-box img[alt *="' + $wordTag + '"]').attr('src');
+        var templateSearch = '<div class="single-content-box">' + 
+        '<div class="content-box-img"><div class="img-prev-container">' + 
+        '<img src="' + $scrSearch + '" alt=""></div></div></div>';
+        if ($wordTag == null || $scrSearch == undefined) {
+            $searchResultError.show();
+        } else {
+            $searchResult.append(templateSearch);
+        }
+        $searchResult.show();
     });
     //slow scroll
-    $('.gallery-bt').on('click',function(){ 
-    var scroll_el = $(this).attr('href'); 
+    $('.gallery-bt,.gallery-users,.myself-photo').on('click', function() {
+        var scroll_el = $(this).attr('href');
         if ($(scroll_el).length != 0) {
-        $('html, body').animate({ scrollTop: $(scroll_el).offset().top }, 600);
+            $('html, body').animate({
+                scrollTop: $(scroll_el).offset().top
+            }, 600);
         }
         return false;
     });
+    //to my photo
+    $('.myself-photo').on('click', function() {
+        var $singleContentHasImg = $('.single-content-box:has(img[src^="img"])');
+        if ($singleContentHasImg.length !== 0) {
+            $singleContentHasImg.remove();
+        }
+    });
 }());
-$(function() {
-    PhotoBookApp;
-});
+
