@@ -177,16 +177,14 @@ a img {
     max-width: 100%; 
     position: relative; 
 }
-.carousel-block {
-    float: left; 
-    height: 405px;  
-}
 .carousel-block img{
      width: 100%;
 }
 .carousel-block {
     display:block;
     max-width: 100%;
+    float: left; 
+    height: 405px; 
 }
 .carousel-button-left a:before{ 
     content: "";
@@ -348,9 +346,10 @@ label[for ="password"],label[for="login"]{
 }
 .view-img-wrapper{
     position: absolute;
-    display: inline-block;
     top: 8%;
     left: 30%;
+    display: none;
+    z-index: 99999;
 }
 .like-wrapper{
     border: 1px solid #cacaca;
@@ -369,10 +368,6 @@ label[for ="password"],label[for="login"]{
 .like-numb{
     color: #696969;
     margin-left: 5px;
-}
-.view-img-wrapper{
-    display: none;
-    z-index: 99999;
 }
 .search-result {
     display: none;
