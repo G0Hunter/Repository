@@ -369,6 +369,19 @@ label[for ="password"],label[for="login"]{
     color: #696969;
     margin-left: 5px;
 }
+.right-copy{
+    float: right;
+}
+.left-copy a{
+    color: #fff;
+}
+.contacts-section{
+    padding-bottom:5%;
+    text-align: center;
+}
+.address-wrapper{
+    margin-bottom:25px;
+}
 .search-result {
     display: none;
     position: absolute;
